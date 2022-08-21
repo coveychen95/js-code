@@ -45,11 +45,18 @@ susie.say.myCall(bob) // my name is bob
 
 
 Function.prototype.myCall = function (context) {
+  // 1. 没有传入指定的 context（上下文对象） 就使用 window
   const ctx = context || window
+  // 2. 使用 symbol 确保不会属性冲突
   const fn = Symbol('fn')
+  // 通过 this 能拿到 call 前面的函数声明
   ctx[fn] = this
+  // armuments 是一个类数组， 使用解构赋值设置为一个数组
+  // slice 返回数组浅拷贝
   const args = [...arguments].slice(1)
+  // 执行 call 函数
   ctx[fn](...args)
+  // 删除函数
   delete ctx[fn]
 }
 
@@ -61,4 +68,8 @@ var susie = {
 }
 
 susie.say.myCall(bob, 1, 2, 3) // my name is bob, 1, 2, 3
+
+
+
+// 拓展： apply 与 call 使用一直，只不过 call 参数是一个个传入，apply通过数组传入
 

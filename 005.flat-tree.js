@@ -1,4 +1,5 @@
-// 1. 
+// 1. tree to flat 
+// 树结构扁平化
 
 const list = [{
   id: 1,
@@ -38,6 +39,8 @@ function tree2flat(list, pid) {
 const res1 = tree2flat(list)
 console.log('res1: ', res1); // [{ id: 11, pid: 1 }, { id: 12, pid: 1 }, { id: 1 }, { id: 211, pid: 21 }, { id: 21, pist d: 2 }, { id: 2 }, { id: 3 }]
 
+// 2. flat to tree
+// 扁平结构转树结构
 const arr = [
   { id: 11, pid: 1 },
   { id: 12, pid: 1 },

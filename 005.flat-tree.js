@@ -38,3 +38,52 @@ function tree2flat(list, pid) {
 const res1 = tree2flat(list)
 console.log('res1: ', res1); // [{ id: 11, pid: 1 }, { id: 12, pid: 1 }, { id: 1 }, { id: 211, pid: 21 }, { id: 21, pist d: 2 }, { id: 2 }, { id: 3 }]
 
+const arr = [
+  { id: 11, pid: 1 },
+  { id: 12, pid: 1 },
+  { id: 1 },
+  { id: 211, pid: 21 },
+  { id: 21, pid: 2 },
+  { id: 2 },
+  { id: 3 }
+]
+
+function flat2tree(arr) {
+  const map = {}
+  const res = []
+  arr.forEach(node => {
+    map[node.id] = node
+  })
+  arr.forEach(node => {
+    if (node.pid) {
+      const children = map[node.pid].children || []
+      children.push(node)
+      map[node.pid].children = children
+      delete node.pid
+    } else {
+      res.push(node)
+    }
+  })
+  return res
+}
+
+const res2 = flat2tree(arr)
+console.log('res2: ', JSON.stringify(res2)); 
+// [{ 
+//   "id": 1,
+//   "children": [{ 
+//     "id": 11
+//   }, {
+//     "id": 12
+//   }]
+// }, { 
+//   "id": 2,
+//   "children": [{ 
+//     "id": 21, 
+//     "children": [{ 
+//       "id": 211
+//     }]
+//   }]
+// }, {
+//   "id": 3
+// }]

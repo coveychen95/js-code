@@ -25,13 +25,13 @@ function tree2flat(list, pid) {
   const arr = []
   list.forEach(node => {
     if (pid) node.pid = pid
-    if (!node.children) {
-      arr.push(node)
-    } else {
+    if (node.children) {
       const item = { ...node }
       arr.push(...tree2flat(node.children, node.id))
       delete item.children
       arr.push(item)
+    } else {
+      arr.push(node)
     }
   });
   return arr

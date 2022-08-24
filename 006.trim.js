@@ -15,7 +15,7 @@ const res1 = trim(str)
 console.log('res1: ', res1); // s lfdksf
 
 function trim2 (str) {
-  return str.replace(/^[\s]+|[\s]$/, '')
+  return str.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]$/, '')
 }
 const res2 = trim2(str)
 console.log('res2: ', res2); // s lfdksf

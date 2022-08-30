@@ -34,3 +34,24 @@ checkEmail('susie@qq.com')
 checkMobile('15677778888')
 checkMobile('15688889999')
 
+// 3. what is currying
+// 在计算机科学中，柯里化（英语：Currying）是把接受多个参数的函数变换成接受一个单一参数（最初函数的第一个参数）的函数，并且返回接受余下的参数而且返回结果的新函数的技术
+
+
+// 4. 实现 currying 函数
+
+// 基础版本 curry
+var curry = function (fn) {
+  var args = [].slice.call(arguments, 1);
+  return function() {
+      var newArgs = args.concat([].slice.call(arguments));
+      return fn.apply(this, newArgs);
+  };
+};
+
+const checkEmail2 = curry(checkReg, /^\w+@\w+(\.\w+)+$/)
+checkEmail2('bob@qq.com')
+checkEmail2('susie@qq.com')
+const checkMobile2 = curry(checkReg, /^1[3456789]\d{9}$/)
+checkMobile2('15677778888')
+checkMobile2('15688889999')

@@ -71,5 +71,5 @@ susie.say.myCall(bob, 1, 2, 3) // my name is bob, 1, 2, 3
 
 
 
-// 拓展： apply 与 call 使用一直，只不过 call 参数是一个个传入，apply通过数组传入
+// 拓展： apply 与 call 使用一致，只不过 call 参数是一个个传入，apply通过数组传入
 

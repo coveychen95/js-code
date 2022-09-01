@@ -55,3 +55,5 @@ checkEmail2('susie@qq.com')
 const checkMobile2 = curry(checkReg, /^1[3456789]\d{9}$/)
 checkMobile2('15677778888')
 checkMobile2('15688889999')
+
+// 5. 深入版本

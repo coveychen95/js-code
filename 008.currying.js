@@ -56,4 +56,26 @@ const checkMobile2 = curry(checkReg, /^1[3456789]\d{9}$/)
 checkMobile2('15677778888')
 checkMobile2('15688889999')
 
-// 5. 深入版本
+// 5. 优化版本
+
+function curry2(fn) {
+  const length = fn.length;
+  const curryFn = (args) => (arg) => {
+      const curryArgs = args.concat(arg);
+      if (curryArgs.length === length) {
+          return fn(...curryArgs);
+      }
+      return curryFn(curryArgs);
+  }
+  return curryFn([]);
+}
+
+const curry3 = fn => {
+  const judge = (...args) =>
+        args.length === fn.length
+            ? fn(...args)
+            : (arg) => judge(...args, arg)
+  return judge
+}
+
+

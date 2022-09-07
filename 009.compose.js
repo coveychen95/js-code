@@ -42,7 +42,7 @@ const res = addStr(111) // 111 c ;  b ;  a ;
 // 2. reduce
 function compose2 (...funcs) {
   return function (...args) {
-    return funcs.reverse().reduce((f, g) => (...args) => g.call(null, f.apply(null, args)))(args)
+    return funcs.reverse().reduce((pre, cur) => (...args) => pre.call(null, cur.apply(null, args)))(args)
   }
 }
 

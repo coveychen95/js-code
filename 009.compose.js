@@ -38,3 +38,16 @@ function compose (...funcs) {
 
 const addStr = compose(a,b,c)
 const res = addStr(111) // 111 c ;  b ;  a ; 
+
+// 2. reduce
+function compose2 (...funcs) {
+  return function (...args) {
+    return funcs.reverse().reduce((f, g) => (...args) => g.call(null, f.apply(null, args)))(args)
+  }
+}
+
+const addStr2 = compose2(a,b,c)
+console.log('addStr2: ', addStr2);
+const res2 = addStr2(111)// 111 c ;  b ;  a ; 
+console.log('res2: ', res2);
+

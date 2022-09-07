@@ -47,7 +47,5 @@ function compose2 (...funcs) {
 }
 
 const addStr2 = compose2(a,b,c)
-console.log('addStr2: ', addStr2);
-const res2 = addStr2(111)// 111 c ;  b ;  a ; 
-console.log('res2: ', res2);
+const res2 = addStr2(111) // 111 c ;  b ;  a ; 
 

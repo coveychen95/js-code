@@ -41,12 +41,12 @@ console.log('res1: ', res1); // [{"id":1},{"id":11,"pid":1},{"id":12,"pid":1},{"
 // 2. flat to tree
 // 扁平结构转树结构
 const arr = [
+  { id: 1 },
   { id: 11, pid: 1 },
   { id: 12, pid: 1 },
-  { id: 1 },
-  { id: 211, pid: 21 },
-  { id: 21, pid: 2 },
   { id: 2 },
+  { id: 21, pid: 2 },
+  { id: 211, pid: 21 },
   { id: 3 }
 ]
 

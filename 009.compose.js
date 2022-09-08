@@ -40,6 +40,12 @@ const addStr = compose(a,b,c)
 const res = addStr(111) // 111 c ;  b ;  a ; 
 
 // 2. reduce
+// a(b(c(d(e(11)))))
+// 降级处理
+// let de = d(e(11)         res = a(b(c(de(11))))
+// let cde = c(de(11))      res = a(b(cde(11)))
+// let bcde = b(cde(11))    res = a(bcde(11))
+// let abcde = a(bcde(11))  res = abcde(11)
 function compose2 (...funcs) {
   return function (...args) {
     return funcs.reverse().reduce((pre, cur) => (...args) => cur.call(null, pre.apply(null, args)))(args)

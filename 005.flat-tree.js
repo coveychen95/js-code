@@ -27,9 +27,8 @@ function tree2flat(list, pid) {
     if (pid) node.pid = pid
     if (node.children) {
       const item = { ...node }
-      arr.push(...tree2flat(node.children, node.id))
+      arr.push(item, ...tree2flat(node.children, node.id))
       delete item.children
-      arr.push(item)
     } else {
       arr.push(node)
     }
@@ -37,7 +36,7 @@ function tree2flat(list, pid) {
   return arr
 }
 const res1 = tree2flat(list)
-console.log('res1: ', res1); // [{ id: 11, pid: 1 }, { id: 12, pid: 1 }, { id: 1 }, { id: 211, pid: 21 }, { id: 21, pist d: 2 }, { id: 2 }, { id: 3 }]
+console.log('res1: ', res1); // [{"id":1},{"id":11,"pid":1},{"id":12,"pid":1},{"id":2},{"id":21,"pid":2},{"id":211,"pid":21},{"id":3}]
 
 // 2. flat to tree
 // 扁平结构转树结构

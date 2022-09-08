@@ -45,7 +45,7 @@ function wait () {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(true)
-    }, random(5, 10) * 100)
+    }, random(5, 20) * 100)
   })
 }
 

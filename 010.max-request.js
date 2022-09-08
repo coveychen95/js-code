@@ -4,15 +4,34 @@ const urlList = [
   'https://a.com/1', 'https://a.com/2', 'https://a.com/3', 'https://a.com/4', 'https://a.com/5',
   'https://a.com/6', 'https://a.com/7', 'https://a.com/8', 'https://a.com/9', 'https://a.com/10',
 ]
-/**
- * limit request
- * @param {string[]} list - url list
- * @param {number} limit - limit count
- */
-function limitRequest(list, limit) {
-  const res = []
-  const task = []
 
+
+maxRequest(urlList, 3).then(res => {
+  console.log('maxRequest res: ', res);
+})
+function maxRequest(list, limit) {
+  const result = []
+  let count = 0
+  let start = 0
+  return new Promise ((resolve, reject) => {
+    while(start < limit) {
+      addTask()
+      start++
+    }
+    function addTask() {
+      request(list[count]).then(res => {
+        console.log('res: ', res);
+        result.push(res)
+        if (result.length === list.length) {
+          resolve(result)
+        }
+        if (count < list.length) {
+          addTask()
+        }
+      })
+      count++
+    }
+  })
 }
 
 

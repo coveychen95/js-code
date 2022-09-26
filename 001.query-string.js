@@ -1,7 +1,7 @@
 // 实现 url 参数 与 对象相互转换
 
 function obj2str(obj) {
-  return Object.keys(obj).map(k => `${k}=${obj[k]}`).join('&')
+  return Object.entries(obj).map(v => v.join('=')).join('&')
 }
 
 obj2str({ a: '122', d: 'werwe' }) // a=122&d=werwe
